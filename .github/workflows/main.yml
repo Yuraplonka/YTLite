@@ -1,4 +1,4 @@
-name: Create YouTube Plus app
+name: Зробити застосунок YouTube Plus
 
 on:
   workflow_dispatch:
@@ -20,6 +20,12 @@ on:
         type: boolean
         required: true
         default: true
+
+      enable_ryd:
+        description: "Integrate Return YouTube Dislikes"
+        type: boolean
+        required: true
+        default: false
 
       enable_ytabc:
         description: "Integrate YTABConfig"
@@ -74,6 +80,7 @@ jobs:
       enable_youpip: ${{ inputs.enable_youpip }}
       enable_ytuhd: ${{ inputs.enable_ytuhd }}
       enable_yq: ${{ inputs.enable_yq }}
+      enable_ryd: ${{ inputs.enable_ryd }}
       enable_ytabc: ${{ inputs.enable_ytabc }}
       enable_demc: ${{ inputs.enable_demc }}
       tweak_version: ${{ inputs.tweak_version }}
@@ -95,7 +102,7 @@ jobs:
       - name: Hide sensitive inputs
         uses: levibostian/action-hide-sensitive-inputs@v1
         with:
-          exclude_inputs: bundle_id,display_name,enable_demc,enable_ytabc,enable_youpip,enable_yq,enable_ytuhd,info_note,tweak_version
+          exclude_inputs: bundle_id,display_name,enable_demc,enable_ryd,enable_ytabc,enable_youpip,enable_yq,enable_ytuhd,info_note,tweak_version
 
       - name: Download and validate IPA
         run: |
